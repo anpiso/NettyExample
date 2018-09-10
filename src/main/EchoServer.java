@@ -4,8 +4,10 @@ import io.netty.channel.nio.*;
 import io.netty.channel.socket.*;
 import io.netty.channel.socket.nio.*;
 
+//핸들러에서 수신한 데이터를 그대로 돌려줄 EchoServer 생성
 
-public class DiscardServer {
+
+public class EchoServer {
 
 	public static void main(String[] args) throws Exception{
 		EventLoopGroup bossGroup = new NioEventLoopGroup(1);
@@ -20,7 +22,7 @@ public class DiscardServer {
 				@Override
 				public void initChannel(SocketChannel ch) {
 					ChannelPipeline p = ch.pipeline();
-					p.addLast(new DiscardServerHandler());
+					p.addLast(new EchoServerHandler());
 					//클라이언트로부터 처리할 핸들러 지정
 
 				}
