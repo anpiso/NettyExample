@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class NonBlockingServer {
 	private Map<SocketChannel, List<byte[]>> keepDataTrack = new HashMap<>();
-	private ByteBuffer buffer = ByteBuffer.allocate(2 * 2014);
+	private ByteBuffer buffer = ByteBuffer.allocate(2 * 1024);
 
 	private void startEchoServer() {
 		try (	//try블록이 끝날 때 아래의 두 자원들을 자동으로 해제해준다
@@ -124,10 +124,14 @@ public class NonBlockingServer {
 
 		List<byte[]> channelData = keepDataTrack.get(socketChannel);
 		Iterator<byte[]> its = channelData.iterator();
+		//Iterator는 컬렉션 클래스의 데이터를 읽어올 때 사용한다.
 
 		while(its.hasNext()) {
+			//hasNext -> next()가 예외를 throw하지 않고 원소를 반환하는 경우 true
 			byte[] it = its.next();
+			//Iterator의 다음 요소를 돌려준다.
 			its.remove();
+			//Iterator에 의해 반환되는 마지막 요소를 삭제한다. next()메소드 한번 호출당 한번 씩 호출할 수 있다.
 			socketChannel.write(ByteBuffer.wrap(it));
 		}
 
@@ -140,7 +144,7 @@ public class NonBlockingServer {
 		channelData.add(data);
 
 		key.interestOps(SelectionKey.OP_ACCEPT);
-	}
+	}	
 	public static void main(String[] args) {
 		NonBlockingServer main = new NonBlockingServer();
 		main.startEchoServer();
