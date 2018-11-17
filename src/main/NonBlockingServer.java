@@ -20,7 +20,7 @@ public class NonBlockingServer {
 	private ByteBuffer buffer = ByteBuffer.allocate(2 * 1024);
 
 	private void startEchoServer() {
-		try (	//try블록이 끝날 때 아래의 두 자원들을 자동으로 해제해준다
+		try (	//try블록이 끝날 때 괄호 아래의 두 자원들을 자동으로 해제해준다
 				Selector selector = Selector.open();
 				//Selector는 자신에게 등록된 채널에 변경사항이 발생했는지 검사하고 변경사항이 발생한 채널에 접근하게 한다. 
 				ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();

@@ -15,8 +15,8 @@ public class BlockingServer {
 		System.out.println("접속 대기중");
 		
 		while(true) {
-			Socket sock = server.accept();	//디버깅 모드로 실행하면 여기서 멈춤, 왜냐하면 연결되는 클라이언트가 없음
-			//cmd에서 서버 접속 명령을 실행하면 
+			Socket sock = server.accept();		//디버깅 모드로 실행하면 여기서 멈춤, 왜냐하면 연결되는 클라이언트가 없음
+												//cmd에서 서버 접속 명령을 실행하면 
 			System.out.println("클라이언트 연결됨");	//accept메소드가 실행되고 소켓을 생성하고
 			
 			OutputStream out = sock.getOutputStream();
