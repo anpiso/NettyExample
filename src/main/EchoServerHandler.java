@@ -17,7 +17,7 @@ public class EchoServerHandler extends ChannelInboundHandlerAdapter{
 		//수신된 문자열을 콘솔로 출력.
 		
 		ctx.write(msg);
-		//ctx는 ChannelHandlerContext인터페이스의 객체로서 채널 파이프라이넹 대한 이벤트를 처리한다.
+		//ctx는 ChannelHandlerContext인터페이스의 객체로서 채널 파이프라인에 대한 이벤트를 처리한다.
 	}
 	
 	@Override
