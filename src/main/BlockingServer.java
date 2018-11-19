@@ -1,6 +1,8 @@
 import java.io.*;
 import java.net.*;
 
+import io.netty.handler.ssl.SslContext;
+
 //Netty를 이용하지 않은 Blocking소켓의 구현
 
 public class BlockingServer {
@@ -9,6 +11,7 @@ public class BlockingServer {
 		BlockingServer server = new BlockingServer();
 		server.run();	
 
+		SslContext sl;
 	}
 	private void run() throws IOException{
 		ServerSocket server = new ServerSocket(8000);
